@@ -7,7 +7,7 @@
 -- vim.o.background = "dark" -- or "light" for light mode
 -- vim.cmd([[colorscheme gruvbox]])
 
-require('lualine').setup()
+-- require('lualine').setup()
 require('tokyonight').setup({
 	style="night",
 	transparent=true

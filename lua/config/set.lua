@@ -43,6 +43,8 @@ vim.opt.colorcolumn = "80"
 
 vim.opt.signcolumn = "yes"
 
+vim.g.netrw_banner = 0
+
 -- Temporary fix: disable newline comment continuation
 -- vim.cmd("autocmd BufEnter * set formatoptions-=cro")
 -- vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro")

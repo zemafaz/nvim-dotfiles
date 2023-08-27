@@ -8,9 +8,7 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     -- Color theme
-    use 'folke/tokyonight.nvim'
-    -- use { "ellisonleao/gruvbox.nvim" }
-    use 'sainnhe/gruvbox-material'
+    use { "ellisonleao/gruvbox.nvim" }
 
     -- Vim commentary
     use 'tpope/vim-commentary'

@@ -1,40 +1,6 @@
-local lsp = require('lsp-zero')
+local lsp_zero = require('lsp-zero')
 
-lsp.preset('recommended')
-
-lsp.set_preferences({
-    sign_icons = {
-        error = "E",
-        warn = "W",
-        hint = "H",
-        info = "I"
-    }
-})
-
-lsp.ensure_installed({
-    "pyright",
-    "bashls",
-    "lua_ls"
-})
-
-local cmp = require('cmp')
-
-
-local cmp_mappings = lsp.defaults.cmp_mappings({})
-
--- disable completion with tab
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
-
--- disable Enter to confirm
-cmp_mappings['<CR>'] = nil
-
-lsp.setup_nvim_cmp({
-    mapping = cmp_mappings,
-    preselect = cmp.PreselectMode.None
-})
-
-lsp.on_attach(function(client, bufnr)
+lsp_zero.on_attach(function(client, bufnr)
 
     local bufopts = {buffer = bufnr, remap = false}
 
@@ -61,6 +27,38 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, bufopts)
 end)
 
-lsp.nvim_workspace()
+require("mason").setup({})
+require("mason-lspconfig").setup({
+    ensure_installed = {
+        "pyright",
+        "bashls",
+        "lua_ls",
+    },
+    handlers = {
+        lsp_zero.default_setup,
+        jdtls = lsp_zero.noop
+    }
+})
 
-lsp.setup()
+local cmp = require('cmp')
+local cmp_mappings = lsp_zero.defaults.cmp_mappings({})
+
+-- disable completion with tab
+cmp_mappings['<Tab>'] = nil
+cmp_mappings['<S-Tab>'] = nil
+
+-- disable Enter to confirm
+cmp_mappings['<CR>'] = nil
+
+cmp.setup({
+    sources={
+        {name='nvim_lsp'},
+        {name='nvim_lua'},
+        {name='path'},
+    },
+    formatting = lsp_zero.cmp_format(),
+    mapping = cmp_mappings,
+    preselect = cmp.PreselectMode.None
+})
+
+-- lsp_zero.nvim_workspace()

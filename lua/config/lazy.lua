@@ -11,46 +11,56 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
-    -- Color theme
-    { "ellisonleao/gruvbox.nvim" },
-
-
-    -- Vim commentary
-    'tpope/vim-commentary',
-
-    -- LSP
+require("lazy").setup(
     {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v1.x',
-        dependencies = {
-            -- LSP Support
-            {'neovim/nvim-lspconfig'},
-            {'williamboman/mason.nvim', run=':MasonUpdate'},
-            {'williamboman/mason-lspconfig.nvim'},
+        -- Color theme
+        {
+          "folke/tokyonight.nvim",
+          lazy = false,
+          priority = 1000,
+          opts = {},
+        },
 
-            -- Autocompletion
-            {'hrsh7th/nvim-cmp'},
-            {'hrsh7th/cmp-buffer'},
-            {'hrsh7th/cmp-path'},
-            {'saadparwaiz1/cmp_luasnip'},
-            {'hrsh7th/cmp-nvim-lsp'},
-            {'hrsh7th/cmp-nvim-lua'},
+        -- Vim commentary
+        'tpope/vim-commentary',
 
-            -- Snippets
-            {'L3MON4D3/LuaSnip'},
-            {'rafamadriz/friendly-snippets'},
-        }
-    },
+        -- LSP
+        {
+            'VonHeikemen/lsp-zero.nvim',
+            branch = 'v3.x',
+            dependencies = {
+                -- LSP Support
+                {'neovim/nvim-lspconfig'},
+                {'williamboman/mason.nvim', run=':MasonUpdate'},
+                {'williamboman/mason-lspconfig.nvim'},
 
+                -- Autocompletion
+                {'hrsh7th/nvim-cmp'},
+                {'hrsh7th/cmp-buffer'},
+                {'hrsh7th/cmp-path'},
+                {'saadparwaiz1/cmp_luasnip'},
+                {'hrsh7th/cmp-nvim-lsp'},
+                {'hrsh7th/cmp-nvim-lua'},
 
-    -- Airline
-    -- {
-        --         'nvim-lualine/lualine.nvim',
-        --         dependencies = { 'kyazdani42/nvim-web-devicons', opt = true }
-        -- },
+                -- Snippets
+                {'L3MON4D3/LuaSnip'},
+                {'rafamadriz/friendly-snippets'},
+            }
+        },
 
-        -- Nvim telescope
+        -- Java LSP
+        'mfussenegger/nvim-jdtls',
+
+        -- Debugger
+        {'mfussenegger/nvim-dap', dependencies={"rcarriga/nvim-dap-ui"}},
+
+        -- Airline
+        -- {
+            --         'nvim-lualine/lualine.nvim',
+            --         dependencies = { 'kyazdani42/nvim-web-devicons', opt = true }
+            -- },
+
+            -- Nvim telescope
         {
             'nvim-telescope/telescope.nvim', tag = '0.1.0',
             dependencies = {
@@ -67,24 +77,5 @@ require("lazy").setup({
 
         -- Vim fugitive (git in vim)
         "tpope/vim-fugitive"
-    },
-    {
-        ui = {
-            icons = {
-                cmd = "⌘",
-                config = "🛠",
-                event = "📅",
-                ft = "📂",
-                init = "⚙",
-                keys = "🗝",
-                plugin = "🔌",
-                runtime = "💻",
-                require = "🌙",
-                source = "📄",
-                start = "🚀",
-                task = "📌",
-                lazy = "💤 ",
-            },
-        },
     }
 )

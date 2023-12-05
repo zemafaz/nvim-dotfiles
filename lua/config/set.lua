@@ -29,7 +29,20 @@ vim.o.splitright = true
 vim.o.undofile = true
 
 -- Use system clipboard
-vim.opt.clipboard="unnamedplus"
+-- vim.opt.clipboard="unnamedplus"
+vim.cmd([[let g:clipboard = {
+  \   'name': 'WslClipboard',
+  \   'copy': {
+  \      '+': 'clip.exe',
+  \      '*': 'clip.exe',
+  \    },
+  \   'paste': {
+  \      '+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+  \      '*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+  \   },
+  \   'cache_enabled': 0,
+  \ }
+]])
 
 -- Number of min lines above/under cursor
 vim.opt.scrolloff=8

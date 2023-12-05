@@ -33,7 +33,22 @@ vim.keymap.set("n", "<C-i>", "<C-i>zz")
 vim.keymap.set("n", "<C-o>", "<C-o>zz")
 
 -- Paste in visual mode
-vim.keymap.set("v", "p", "\"_dP")
+vim.keymap.set("n", "y", "\"*y")
+vim.keymap.set("n", "Y", "\"*Y")
+vim.keymap.set("v", "y", "\"*y")
+vim.keymap.set("v", "Y", "\"*Y")
+vim.keymap.set("n", "yy", "\"*yy")
+
+vim.keymap.set("n", "p", "\"*p")
+vim.keymap.set("n", "P", "\"*P")
+vim.keymap.set("v", "p", "\"*p")
+vim.keymap.set("v", "P", "\"*P")
+
+vim.keymap.set("n", "d", "\"*d")
+vim.keymap.set("n", "D", "\"*D")
+vim.keymap.set("v", "d", "\"*d")
+vim.keymap.set("v", "D", "\"*D")
+vim.keymap.set("n", "dd", "\"*dd")
 
 -- Discard x deletion
 vim.keymap.set("n", "x", "\"_x")
@@ -42,7 +57,10 @@ vim.keymap.set("n", "x", "\"_x")
 vim.keymap.set("n", "<esc>", "<cmd>:noh<cr>")
 
 -- Close Buffer
-vim.keymap.set("n", "<space>cb", "<cmd>:bd<cr>")
+vim.keymap.set("n", "<leader>cb", "<cmd>:bd<cr>")
+
+-- Launch DBUI
+vim.keymap.set("n", "<leader>db", "<cmd>:DBUIToggle<cr>")
 
 -- Focus windows
 -- vim.keymap.set("n", "<leader>l", "<c-w>l")

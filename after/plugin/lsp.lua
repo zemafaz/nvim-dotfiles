@@ -30,7 +30,6 @@ end)
 require("mason").setup({})
 require("mason-lspconfig").setup({
     ensure_installed = {
-        "pyright",
         "bashls",
         "lua_ls",
     },
@@ -55,6 +54,15 @@ cmp.setup({
         {name='nvim_lsp'},
         {name='nvim_lua'},
         {name='path'},
+    },
+    formatting = lsp_zero.cmp_format(),
+    mapping = cmp_mappings,
+    preselect = cmp.PreselectMode.None
+})
+
+cmp.setup.filetype({'sql', 'mysql', 'plsql'}, {
+    sources={
+        {name='vim-dadbod-completion'},
     },
     formatting = lsp_zero.cmp_format(),
     mapping = cmp_mappings,

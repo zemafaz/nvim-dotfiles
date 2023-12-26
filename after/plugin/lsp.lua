@@ -35,9 +35,39 @@ require("mason-lspconfig").setup({
     },
     handlers = {
         lsp_zero.default_setup,
-        jdtls = lsp_zero.noop
+        jdtls = lsp_zero.noop,
+        pylsp = function ()
+            require("lspconfig").pylsp.setup({
+                settings = {
+                    pylsp = {
+                        plugins = {
+                            pycodestyle = {
+                                enabled = false
+                            }
+                        }
+                    }
+                }
+            })
+        end
     }
 })
+
+-- Terraform
+vim.api.nvim_create_autocmd({"BufWritePre"}, {
+  pattern = {"*.tf", "*.tfvars"},
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+})
+
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = {"*.tfvars"},
+  callback = function()
+    vim.cmd("set filetype=terraform")
+  end,
+})
+
+
 
 local cmp = require('cmp')
 local cmp_mappings = lsp_zero.defaults.cmp_mappings({})

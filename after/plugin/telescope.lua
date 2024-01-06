@@ -1,7 +1,11 @@
 require("telescope").setup({
-    -- defaults = {
-    --     initial_mode = "normal" 
-    -- }
+    defaults = {
+        borderchars = {
+            prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
+            results = { " " },
+            preview = { " " },
+        },
+  }
 })
 
 vim.keymap.set("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>")

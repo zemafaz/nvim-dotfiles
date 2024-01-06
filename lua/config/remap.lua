@@ -44,6 +44,12 @@ vim.keymap.set("n", "<esc>", "<cmd>:noh<cr>")
 -- Close Buffer
 vim.keymap.set("n", "<space>cb", "<cmd>:bd<cr>")
 
+-- Resize windows
+vim.keymap.set("n", "<C-w><", "<cmd>:vertical resize -10<cr>")
+vim.keymap.set("n", "<C-w>>", "<cmd>:vertical resize +10<cr>")
+vim.keymap.set("n", "<C-w>-", "<cmd>:resize -10<cr>")
+vim.keymap.set("n", "<C-w>+", "<cmd>:resize +10<cr>")
+
 -- Focus windows
 -- vim.keymap.set("n", "<leader>l", "<c-w>l")
 -- vim.keymap.set("n", "<leader>h", "<c-w>h")

@@ -1,8 +1,7 @@
 local lsp_zero = require('lsp-zero')
 
 lsp_zero.on_attach(function(client, bufnr)
-
-    local bufopts = {buffer = bufnr, remap = false}
+    local bufopts = { buffer = bufnr, remap = false }
 
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
@@ -30,15 +29,77 @@ end)
 require("mason").setup({})
 require("mason-lspconfig").setup({
     ensure_installed = {
-        "pyright",
+        "pylsp",
         "bashls",
         "lua_ls",
     },
     handlers = {
         lsp_zero.default_setup,
-        jdtls = lsp_zero.noop
+        jdtls = lsp_zero.noop,
+        lua_ls = function()
+            require('lspconfig').lua_ls.setup({
+                on_init = function(client)
+                    local path = client.workspace_folders[1].name
+                    if not vim.loop.fs_stat(path .. '/.luarc.json') and not vim.loop.fs_stat(path .. '/.luarc.jsonc') then
+                        client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
+                            Lua = {
+                                runtime = {
+                                    -- Tell the language server which version of Lua you're using
+                                    -- (most likely LuaJIT in the case of Neovim)
+                                    version = 'LuaJIT'
+                                },
+                                -- Make the server aware of Neovim runtime files
+                                workspace = {
+                                    checkThirdParty = false,
+                                    library = {
+                                        vim.env.VIMRUNTIME
+                                        -- "${3rd}/luv/library"
+                                        -- "${3rd}/busted/library",
+                                    }
+                                    -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
+                                    -- library = vim.api.nvim_get_runtime_file("", true)
+                                }
+                            }
+                        })
+
+                        client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+                    end
+                    return true
+                end
+            })
+        end,
+        pylsp = function ()
+            require("lspconfig").pylsp.setup({
+                settings = {
+                    pylsp = {
+                        plugins = {
+                            pycodestyle = {
+                                enabled = false
+                            }
+                        }
+                    }
+                }
+            })
+        end
     }
 })
+--
+-- Terraform
+vim.api.nvim_create_autocmd({"BufWritePre"}, {
+  pattern = {"*.tf", "*.tfvars"},
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+})
+
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = {"*.tfvars"},
+  callback = function()
+    vim.cmd("set filetype=terraform")
+  end,
+})
+
+
 
 local cmp = require('cmp')
 local cmp_mappings = lsp_zero.defaults.cmp_mappings({})
@@ -50,11 +111,21 @@ cmp_mappings['<S-Tab>'] = nil
 -- disable Enter to confirm
 cmp_mappings['<CR>'] = nil
 
-cmp.setup({
+-- SQL completions
+cmp.setup.filetype({'sql', 'mysql', 'plsql'}, {
     sources={
-        {name='nvim_lsp'},
-        {name='nvim_lua'},
-        {name='path'},
+        {name='vim-dadbod-completion'},
+    },
+    formatting = lsp_zero.cmp_format(),
+    mapping = cmp_mappings,
+    preselect = cmp.PreselectMode.None
+})
+
+cmp.setup({
+    sources = {
+        { name = 'nvim_lsp' },
+        { name = 'nvim_lua' },
+        { name = 'path' },
     },
     formatting = lsp_zero.cmp_format(),
     mapping = cmp_mappings,

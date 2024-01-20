@@ -69,17 +69,31 @@ require("mason-lspconfig").setup({
             })
         end,
         pylsp = function ()
-            require("lspconfig").pylsp.setup({
+
+            local opts = {
                 settings = {
                     pylsp = {
                         plugins = {
                             pycodestyle = {
-                                enabled = false
+                                enabled = true,
+                                maxLineLength = 140
+                            },
+                            jedi = {
+                                extra_paths = {}
                             }
                         }
                     }
                 }
-            })
+            }
+
+            -- Changing settings per project
+            local workspace_path = vim.fn.getcwd()
+            local onegpm_path = os.getenv("ONEGPM_WORKSPACE")
+            if workspace_path == onegpm_path then
+                opts.settings.pylsp.plugins.jedi.extra_paths = {onegpm_path .. "/assets/libraries/onegpm_common_lib"}
+            end
+
+            require("lspconfig").pylsp.setup(opts)
         end
     }
 })

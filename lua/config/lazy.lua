@@ -26,8 +26,14 @@ require("lazy").setup(
             branch="main"
         },
 
-        -- Vim commentary
-        'tpope/vim-commentary',
+        -- Comment
+        {
+            'numToStr/Comment.nvim',
+            opts = {
+                -- add any options here
+            },
+            lazy = false,
+        },
 
         -- LSP
         {
@@ -67,7 +73,7 @@ require("lazy").setup(
 
         -- Nvim telescope
         {
-            'nvim-telescope/telescope.nvim', tag = '0.1.x',
+            'nvim-telescope/telescope.nvim', branch = '0.1.x',
             dependencies = {
                 {'nvim-lua/plenary.nvim'},
             }
@@ -102,9 +108,25 @@ require("lazy").setup(
             vim.g.db_ui_execute_on_save = 0
 
             -- Run paragraph query
-            vim.keymap.set("n", "<leader>rq", "vip<Plug>(DBUI_ExecuteQuery)")
+            vim.keymap.set("n", "<leader>rq", "vip<Plug>(DBUI_ExecuteQuery)", {desc = "vim-dadbod-ui run paragrapth query"})
 
           end,
         },
+
+        -- Github Copilot
+        {"github/copilot.vim", branch="release"},
+
+        -- Trouble
+        {
+            "folke/trouble.nvim",
+            dependencies = { "nvim-tree/nvim-web-devicons" },
+        },
+
+        "nvim-tree/nvim-tree.lua",
+
+        {
+            'nvim-lualine/lualine.nvim',
+            dependencies = { 'nvim-tree/nvim-web-devicons' }
+        }
     }
 )

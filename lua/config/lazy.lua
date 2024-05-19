@@ -14,42 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup(
     {
         { import = "plugin" },
-        -- Comment
-        {
-            'numToStr/Comment.nvim',
-            opts = {
-                -- add any options here
-            },
-            lazy = false,
-        },
-
-        -- LSP
-        {
-            'VonHeikemen/lsp-zero.nvim',
-            branch = 'v3.x',
-            dependencies = {
-                -- LSP Support
-                { 'neovim/nvim-lspconfig' },
-                { 'williamboman/mason.nvim',          run = ':MasonUpdate' },
-                { 'williamboman/mason-lspconfig.nvim' },
-                {
-                    "folke/trouble.nvim",
-                    dependencies = { "nvim-tree/nvim-web-devicons" },
-                },
-
-                -- Autocompletion
-                { 'hrsh7th/nvim-cmp' },
-                { 'hrsh7th/cmp-buffer' },
-                { 'hrsh7th/cmp-path' },
-                { 'saadparwaiz1/cmp_luasnip' },
-                { 'hrsh7th/cmp-nvim-lsp' },
-                { 'hrsh7th/cmp-nvim-lua' },
-
-                -- Snippets
-                { 'L3MON4D3/LuaSnip' },
-                { 'rafamadriz/friendly-snippets' },
-            }
-        },
 
         -- Java LSP
         'mfussenegger/nvim-jdtls',
@@ -157,6 +121,7 @@ require("lazy").setup(
             cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
             ft = { "markdown" },
             build = function() vim.fn["mkdp#util#install"]() end,
+        },
 
         {
           'stevearc/oil.nvim',
@@ -164,6 +129,10 @@ require("lazy").setup(
           -- Optional dependencies
           dependencies = { "nvim-tree/nvim-web-devicons" },
         }
-},
+    },
+    {
+        change_detection = {
+            notify = false,
+        }
     }
 )

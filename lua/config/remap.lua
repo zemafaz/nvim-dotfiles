@@ -6,7 +6,7 @@ vim.keymap.set("n", "<leader>ex", "<cmd>Ex<CR>")
 vim.keymap.set("n", "<leader>ve", "<cmd>Vex<CR>") -- open on a vertical split
 
 -- Toggle Terminal
-vim.keymap.set("n", "<leader><CR>", "<cmd>8split term://bash<CR>")
+vim.keymap.set("n", "<leader><CR>", "<cmd>tabnew term://zsh<CR>")
 
 -- Terminal Mode to normal mode
 vim.keymap.set("t", "<esc>", "<C-\\><C-n>")

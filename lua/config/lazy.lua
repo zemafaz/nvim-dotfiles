@@ -15,9 +15,6 @@ require("lazy").setup(
     {
         { import = "plugin" },
 
-        -- Java LSP
-        'mfussenegger/nvim-jdtls',
-
         -- Debugger
         {
             "rcarriga/nvim-dap-ui",

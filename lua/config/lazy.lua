@@ -15,12 +15,6 @@ require("lazy").setup(
     {
         { import = "plugins" },
 
-        -- Debugger
-        {
-            "rcarriga/nvim-dap-ui",
-            dependencies = { 'mfussenegger/nvim-dap', "nvim-neotest/nvim-nio" }
-        },
-
         -- Lualine
         {
             'nvim-lualine/lualine.nvim',

@@ -1,3 +1,6 @@
+-----------------
+-- Tokyo Night --
+-----------------
 require("tokyonight").setup({
     style="night",
     styles={
@@ -9,7 +12,34 @@ require("tokyonight").setup({
 })
 vim.cmd([[colorscheme tokyonight]])
 
--- vim.g.gruvbox_baby_background_color = "medium"
--- vim.g.gruvbox_baby_telescope_theme = 1
--- vim.g.gruvbox_baby_transparent_mode = 1
--- vim.cmd([[colorscheme gruvbox-baby]])
+----------------------
+-- Gruvbox-Material --
+----------------------
+-- vim.o.background = "dark"
+-- vim.g.gruvbox_material_foreground = "material"
+-- vim.g.gruvbox_material_background = "hard"
+-- vim.g.gruvbox_material_transparent_background = true
+-- vim.g.gruvbox_material_better_performance = true
+-- vim.cmd.colorscheme("gruvbox-material")
+
+----------------
+-- Catppuccin --
+----------------
+-- require("catppuccin").setup({
+--     flavour = "frappe",
+--     transparent_background = true,
+--     integrations = {
+--         harpoon = true,
+--         mason = true,
+--     }
+-- })
+-- vim.cmd.colorscheme("catppuccin")
+
+--------------
+-- Kanagawa --
+--------------
+-- require("kanagawa").setup({
+--     -- transparent=true,
+--     theme="lotus",
+-- })
+-- vim.cmd.colorscheme("kanagawa")

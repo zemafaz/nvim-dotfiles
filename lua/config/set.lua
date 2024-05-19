@@ -1,4 +1,5 @@
-vim.opt.guicursor = ""
+-- Disable cursor styling
+vim.o.guicursor = ""
 
 vim.o.syntax = "on"
 
@@ -35,7 +36,7 @@ vim.opt.clipboard="unnamedplus"
 vim.opt.scrolloff=8
 
 -- Enable 24 bit RGB color
-vim.opt.termguicolors=true
+vim.o.termguicolors = true
 
 vim.opt.updatetime = 50
 
@@ -44,6 +45,9 @@ vim.opt.colorcolumn = "80"
 vim.opt.signcolumn = "yes"
 
 vim.g.netrw_banner = 0
+
+-- Set current directory
+-- vim.cmd(":cd %:h")
 
 -- Temporary fix: disable newline comment continuation
 -- vim.cmd("autocmd BufEnter * set formatoptions-=cro")

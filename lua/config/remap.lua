@@ -12,19 +12,19 @@ vim.keymap.set("n", "<leader><CR>", "<cmd>8split term://bash<CR>")
 vim.keymap.set("t", "<esc>", "<C-\\><C-n>")
 
 -- Disable "easy" mode
-local arrow_keys = {'<Up>','<Down>','<Left>','<Right>'}
-
-for i, key in ipairs(arrow_keys) do
-  vim.keymap.set("n", key, "<Nop>")  
-  vim.keymap.set("i", key, "<Nop>")
-  -- vim.keymap.set("c", key, "<Nop>")
-  -- vim.keymap.set("t", key, "<Nop>")
-  vim.keymap.set("v", key, "<Nop>")
-  vim.keymap.set("x", key, "<Nop>")
-  vim.keymap.set("s", key, "<Nop>")
-  vim.keymap.set("o", key, "<Nop>")
-  vim.keymap.set("l", key, "<Nop>")
-end
+-- local arrow_keys = {'<Up>','<Down>','<Left>','<Right>'}
+--
+-- for i, key in ipairs(arrow_keys) do
+--   vim.keymap.set("n", key, "<Nop>")  
+--   vim.keymap.set("i", key, "<Nop>")
+--   -- vim.keymap.set("c", key, "<Nop>")
+--   -- vim.keymap.set("t", key, "<Nop>")
+--   vim.keymap.set("v", key, "<Nop>")
+--   vim.keymap.set("x", key, "<Nop>")
+--   vim.keymap.set("s", key, "<Nop>")
+--   vim.keymap.set("o", key, "<Nop>")
+--   vim.keymap.set("l", key, "<Nop>")
+-- end
 
 -- Center after scrolling
 vim.keymap.set("n", "<C-d>", "<C-d>zz")

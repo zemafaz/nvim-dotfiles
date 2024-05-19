@@ -44,23 +44,17 @@ vim.keymap.set("n", "<esc>", "<cmd>:noh<cr>")
 -- Close Buffer
 vim.keymap.set("n", "<space>cb", "<cmd>:bd<cr>")
 
--- Resize windows
-vim.keymap.set("n", "<M-<>", "<cmd>:vertical resize -10<cr>")
-vim.keymap.set("n", "<M->>", "<cmd>:vertical resize +10<cr>")
-vim.keymap.set("n", "<M-->", "<cmd>:resize -10<cr>")
-vim.keymap.set("n", "<M-+>", "<cmd>:resize +10<cr>")
-
 -- Move between windows
 vim.keymap.set("n", "<C-h>", "<C-w>h")
 vim.keymap.set("n", "<C-j>", "<C-w>j")
 vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
 
--- Focus windows
--- vim.keymap.set("n", "<leader>l", "<c-w>l")
--- vim.keymap.set("n", "<leader>h", "<c-w>h")
--- vim.keymap.set("n", "<leader>j", "<c-w>j")
--- vim.keymap.set("n", "<leader>k", "<c-w>k")
+-- Resize windows
+vim.keymap.set("n", "<M-h>", "<cmd>:vertical resize -10<cr>")
+vim.keymap.set("n", "<M-l>", "<cmd>:vertical resize +10<cr>")
+vim.keymap.set("n", "<M-j>", "<cmd>:resize -10<cr>")
+vim.keymap.set("n", "<M-k>", "<cmd>:resize +10<cr>")
 
 -- Open new tab on parent folder
 -- vim.keymap.set("n", "<leader>t", "<cmd>tabnew .<CR>")

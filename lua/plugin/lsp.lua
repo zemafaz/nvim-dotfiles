@@ -26,11 +26,22 @@ return {
     config = function()
         local lsp_zero = require('lsp-zero')
 
-        lsp_zero.on_attach(function(client, bufnr)
+        lsp_zero.on_attach(function(_, bufnr)
             local bufopts = { buffer = bufnr, remap = false }
 
+            -- Integration with trouble
+            if pcall(require, "trouble") then
+                vim.keymap.set("n", "gr", function() require("trouble").toggle("lsp_references") end, bufopts)
+                vim.keymap.set("n", "gd", function() require("trouble").toggle("lsp_definitions") end, bufopts)
+                vim.keymap.set("n", "<leader>D", function() require("trouble").toggle("lsp_type_definitions") end,
+                    bufopts)
+            else
+                vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+                vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+                vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+            end
+
             vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
             vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
             vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
@@ -39,10 +50,8 @@ return {
             vim.keymap.set('n', '<space>wl', function()
                 print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
             end, bufopts)
-            vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
             vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
             vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-            vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
             vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
             vim.keymap.set('i', "<C-h>", function() vim.lsp.buf.signature_help() end, bufopts)
 

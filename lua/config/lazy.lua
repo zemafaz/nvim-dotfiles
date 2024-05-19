@@ -40,17 +40,7 @@ require("lazy").setup(
                     'nvim-telescope/telescope-fzf-native.nvim',
                     build = "make",
                 },
-                {
-                    "folke/trouble.nvim",
-                    dependencies = { "nvim-tree/nvim-web-devicons" },
-                },
-
             }
-        },
-
-        {
-            "folke/trouble.nvim",
-            dependencies = { "nvim-tree/nvim-web-devicons" },
         },
 
         -- Dir-telescope

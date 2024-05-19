@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup(
     {
-        { import = "plugin" },
+        { import = "plugins" },
 
         -- Debugger
         {
@@ -68,16 +68,6 @@ require("lazy").setup(
                 vim.keymap.set("n", "<leader>rq", "vip<Plug>(DBUI_ExecuteQuery)",
                     { desc = "vim-dadbod-ui run paragrapth query" })
             end,
-        },
-
-        -- Github Copilot
-        { "github/copilot.vim", branch = "release" },
-
-        -- Trouble
-
-        {
-            'nvim-lualine/lualine.nvim',
-            dependencies = { 'nvim-tree/nvim-web-devicons' }
         },
 
         {

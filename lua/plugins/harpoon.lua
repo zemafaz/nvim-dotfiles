@@ -1,17 +1,25 @@
 return {
     "ThePrimeagen/harpoon",
-    keys = {
-        { "<leader>a", "<cmd>lua require('harpoon.mark').add_file<cr>",        mode = "n" },
-        { "<C-e>",     "<cmd>lua require('harpoon.ui').toggle_quick_menu<cr>", mode = "n" },
-        { "<M-1>",     "<cmd>lua require('harpoon.ui').nav_file(1)<cr>",       mode = "n" },
-        { "<M-2>",     "<cmd>lua require('harpoon.ui').nav_file(2)<cr>",       mode = "n" },
-        { "<M-3>",     "<cmd>lua require('harpoon.ui').nav_file(3)<cr>",       mode = "n" },
-        { "<M-4>",     "<cmd>lua require('harpoon.ui').nav_file(4)<cr>",       mode = "n" },
-        { "<M-5>",     "<cmd>lua require('harpoon.ui').nav_file(5)<cr>",       mode = "n" },
-        { "<M-6>",     "<cmd>lua require('harpoon.ui').nav_file(6)<cr>",       mode = "n" },
-        { "<M-7>",     "<cmd>lua require('harpoon.ui').nav_file(7)<cr>",       mode = "n" },
-        { "<M-8>",     "<cmd>lua require('harpoon.ui').nav_file(8)<cr>",       mode = "n" },
-        { "<M-9>",     "<cmd>lua require('harpoon.ui').nav_file(9)<cr>",       mode = "n" },
-        { "<M-0>",     "<cmd>lua require('harpoon.ui').nav_file(10)<cr>",      mode = "n" },
+    branch = "harpoon2",
+    requires = {
+        "nvim-lua/plenary.nvim",
     },
+    keys = {
+        { "<leader>a", function() require("harpoon"):list():add() end,                                    mode = "n" },
+        { "<C-e>",     function() require("harpoon").ui:toggle_quick_menu(require("harpoon"):list()) end, mode = "n" },
+        { "<M-1>",     function() require("harpoon"):list():select(1) end,                                mode = "n" },
+        { "<M-2>",     function() require("harpoon"):list():select(2) end,                                mode = "n" },
+        { "<M-3>",     function() require("harpoon"):list():select(3) end,                                mode = "n" },
+        { "<M-4>",     function() require("harpoon"):list():select(4) end,                                mode = "n" },
+        { "<M-5>",     function() require("harpoon"):list():select(5) end,                                mode = "n" },
+        { "<M-6>",     function() require("harpoon"):list():select(6) end,                                mode = "n" },
+        { "<M-7>",     function() require("harpoon"):list():select(7) end,                                mode = "n" },
+        { "<M-8>",     function() require("harpoon"):list():select(8) end,                                mode = "n" },
+        { "<M-9>",     function() require("harpoon"):list():select(9) end,                                mode = "n" },
+        { "<M-0>",     function() require("harpoon"):list():select(0) end,                                mode = "n" },
+    },
+    config = function()
+        local harpoon = require("harpoon")
+        harpoon:setup()
+    end
 }

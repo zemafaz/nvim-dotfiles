@@ -30,26 +30,6 @@ require("lazy").setup(
             dependencies = { 'nvim-tree/nvim-web-devicons' }
         },
 
-        -- Nvim telescope
-        {
-            'nvim-telescope/telescope.nvim',
-            branch = '0.1.x',
-            dependencies = {
-                { 'nvim-lua/plenary.nvim' },
-                {
-                    'nvim-telescope/telescope-fzf-native.nvim',
-                    build = "make",
-                },
-            }
-        },
-
-        -- Dir-telescope
-        {
-            "princejoogie/dir-telescope.nvim",
-            dependencies = {
-                'nvim-telescope/telescope.nvim',
-            }
-        },
 
         -- Treesitter
         { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },

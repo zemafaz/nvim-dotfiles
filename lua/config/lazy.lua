@@ -35,9 +35,6 @@ require("lazy").setup(
         { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
         'nvim-treesitter/nvim-treesitter-context',
 
-        -- Harpoon
-        "ThePrimeagen/harpoon",
-
         -- Neogit
         {
             "NeogitOrg/neogit",

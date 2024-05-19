@@ -13,20 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup(
     {
-        -- Color theme
-        {
-            "folke/tokyonight.nvim",
-            lazy = false,
-            priority = 1000,
-            opts = {},
-        },
-
-        'sainnhe/gruvbox-material',
-
-        { "catppuccin/nvim",                 name = "catppuccin", priority = 1000 },
-
-        "rebelot/kanagawa.nvim",
-
+        { import = "plugin" },
         -- Comment
         {
             'numToStr/Comment.nvim',
@@ -45,6 +32,10 @@ require("lazy").setup(
                 { 'neovim/nvim-lspconfig' },
                 { 'williamboman/mason.nvim',          run = ':MasonUpdate' },
                 { 'williamboman/mason-lspconfig.nvim' },
+                {
+                    "folke/trouble.nvim",
+                    dependencies = { "nvim-tree/nvim-web-devicons" },
+                },
 
                 -- Autocompletion
                 { 'hrsh7th/nvim-cmp' },
@@ -84,8 +75,18 @@ require("lazy").setup(
                 {
                     'nvim-telescope/telescope-fzf-native.nvim',
                     build = "make",
-                }
+                },
+                {
+                    "folke/trouble.nvim",
+                    dependencies = { "nvim-tree/nvim-web-devicons" },
+                },
+
             }
+        },
+
+        {
+            "folke/trouble.nvim",
+            dependencies = { "nvim-tree/nvim-web-devicons" },
         },
 
         -- Dir-telescope
@@ -145,10 +146,6 @@ require("lazy").setup(
         { "github/copilot.vim", branch = "release" },
 
         -- Trouble
-        {
-            "folke/trouble.nvim",
-            dependencies = { "nvim-tree/nvim-web-devicons" },
-        },
 
         {
             'nvim-lualine/lualine.nvim',

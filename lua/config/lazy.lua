@@ -15,10 +15,6 @@ require("lazy").setup(
     {
         { import = "plugins" },
 
-        -- Treesitter
-        { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
-        'nvim-treesitter/nvim-treesitter-context',
-
         -- Neogit
         {
             "NeogitOrg/neogit",

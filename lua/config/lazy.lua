@@ -15,13 +15,6 @@ require("lazy").setup(
     {
         { import = "plugins" },
 
-        -- Lualine
-        {
-            'nvim-lualine/lualine.nvim',
-            dependencies = { 'nvim-tree/nvim-web-devicons' }
-        },
-
-
         -- Treesitter
         { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
         'nvim-treesitter/nvim-treesitter-context',

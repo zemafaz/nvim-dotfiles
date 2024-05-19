@@ -12,16 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup(
-    {
-        { import = "plugins" },
-
-        {
-          'stevearc/oil.nvim',
-          opts = {},
-          -- Optional dependencies
-          dependencies = { "nvim-tree/nvim-web-devicons" },
-        }
-    },
+    { import = "plugins" },
     {
         change_detection = {
             notify = false,

@@ -1,6 +1,10 @@
 return {
     "mfussenegger/nvim-dap",
-    dependencies = { "rcarriga/nvim-dap-ui", "nvim-neotest/nvim-nio" },
+    dependencies = {
+        "rcarriga/nvim-dap-ui",
+        "nvim-neotest/nvim-nio",
+        'williamboman/mason.nvim',
+    },
     keys = {
         { "<F5>",       function() require("dap").continue() end,                                                    mode = "n" },
         { "<F9>",       function() require("dap").terminate() end,                                                   mode = "n" },

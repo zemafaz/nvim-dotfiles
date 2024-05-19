@@ -56,8 +56,8 @@ return {
             vim.keymap.set('i', "<C-h>", function() vim.lsp.buf.signature_help() end, bufopts)
 
             vim.keymap.set('n', '<space>ef', vim.diagnostic.open_float, bufopts)
-            vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, bufopts)
-            vim.keymap.set('n', ']d', vim.diagnostic.goto_next, bufopts)
+            vim.keymap.set('n', '(d', vim.diagnostic.goto_prev, bufopts)
+            vim.keymap.set('n', ')d', vim.diagnostic.goto_next, bufopts)
             vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, bufopts)
         end)
 

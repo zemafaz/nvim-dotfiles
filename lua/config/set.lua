@@ -1,5 +1,5 @@
 -- Disable cursor styling
-vim.o.guicursor = ""
+-- vim.o.guicursor = ""
 
 vim.o.syntax = "on"
 
@@ -60,3 +60,4 @@ vim.g.netrw_banner = 0
 -- Change working directory to opened file's
 -- vim.o.autochdir = true
 
+vim.opt.inccommand="split"

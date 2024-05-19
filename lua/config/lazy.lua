@@ -83,14 +83,16 @@ require("lazy").setup(
                 { 'nvim-lua/plenary.nvim' },
                 {
                     'nvim-telescope/telescope-fzf-native.nvim',
-                    build = "make"
-                },
-                {
-                    "nvim-telescope/telescope-live-grep-args.nvim",
-                    -- This will not install any breaking changes.
-                    -- For major updates, this must be adjusted manually.
-                    version = "^1.0.0",
-                },
+                    build = "make",
+                }
+            }
+        },
+
+        -- Dir-telescope
+        {
+            "princejoogie/dir-telescope.nvim",
+            dependencies = {
+                'nvim-telescope/telescope.nvim',
             }
         },
 
@@ -109,7 +111,7 @@ require("lazy").setup(
                 "sindrets/diffview.nvim", -- optional - Diff integration
 
                 -- Only one of these is needed, not both.
-                -- "nvim-telescope/telescope.nvim", -- optional
+                "nvim-telescope/telescope.nvim", -- optional
                 -- "ibhagwan/fzf-lua",              -- optional
             },
             config = true
@@ -155,18 +157,11 @@ require("lazy").setup(
             dependencies = { 'nvim-tree/nvim-web-devicons' }
         },
 
-        "petertriho/nvim-scrollbar",
-
         {
             "iamcco/markdown-preview.nvim",
             cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
             ft = { "markdown" },
             build = function() vim.fn["mkdp#util#install"]() end,
         },
-
-        {
-            dir="/home/ctw03319/Private/Projects/lsp-local-libraries.nvim"
-        }
-
     }
 )

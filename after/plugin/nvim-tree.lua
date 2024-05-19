@@ -29,12 +29,18 @@ require("nvim-tree").setup({
     on_attach = my_on_attach,
     actions = {
         open_file = {
-            quit_on_open = true
+            quit_on_open = false
         }
     },
     view = {
         width = 50,
         relativenumber = true,
+    },
+    filters = {
+        git_ignored = false
+    },
+    update_focused_file = {
+        enable = true
     }
 })
 

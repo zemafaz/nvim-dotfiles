@@ -84,69 +84,21 @@ require("mason-lspconfig").setup({
                     }
                 }
             }
-
-            -- Changing settings per project
-            local workspace_path = vim.fn.getcwd()
-            local dap_path = {
-                os.getenv("HOME") .. "/Projects/dap/fsm-sast-reporting-layer-data/"
-            }
-            local cdaf_infrastructure_path = "../cloud-daf-infrastructure"
-
-            for _, value in ipairs(dap_path) do
-                if workspace_path == value then
-                    opts.settings.pylsp.plugins.jedi.extra_paths = {
-                        os.getenv("PERSONAL_LIBS") .. "/aws-glue-libs",
-                        cdaf_infrastructure_path .. "/terrajson/libraries/cdaf_aws_package",
-                        cdaf_infrastructure_path .. "/terrajson/libraries/cdaf_commonfunctions_package",
-                        cdaf_infrastructure_path .. "/terrajson/libraries/cdaf_constants_package",
-                        cdaf_infrastructure_path .. "/terrajson/libraries/cdaf_exceptions_package",
-                        cdaf_infrastructure_path .. "/terrajson/libraries/cdaf_monitoring_lib_package",
-                        cdaf_infrastructure_path .. "/terrajson/libraries/cdaf_provider_package",
-                        cdaf_infrastructure_path .. "/terrajson/libraries/cdaf_qualitycheck_package",
-                        cdaf_infrastructure_path .. "/terrajson/libraries/cdaf_sla_package",
-                        cdaf_infrastructure_path .. "/terrajson/libraries/cdaf_usecase_package",
-                    }
-                end
-            end
-
-            -- local onegpm_path = os.getenv("HOME") .. "$HOME/Projects/onegpm/uc-one-gpm"
-            -- if workspace_path == onegpm_path then
-            --     local cdaf_infrastructure_path = os.getenv("CDAF_INFRASTRUCTURE_WORKSPACE")
-            --     opts.settings.pylsp.plugins.jedi.extra_paths = {
-            --         onegpm_path .. "/assets/libraries/onegpm_common_lib",
-            --         os.getenv("AWS_GLUE_LIBS"),
-            --         cdaf_infrastructure_path .. "/terrajson/libraries/cdaf_aws_package",
-            --         cdaf_infrastructure_path .. "/terrajson/libraries/cdaf_commonfunctions_package",
-            --         cdaf_infrastructure_path .. "/terrajson/libraries/cdaf_constants_package",
-            --         cdaf_infrastructure_path .. "/terrajson/libraries/cdaf_exceptions_package",
-            --         cdaf_infrastructure_path .. "/terrajson/libraries/cdaf_monitoring_lib_package",
-            --         cdaf_infrastructure_path .. "/terrajson/libraries/cdaf_provider_package",
-            --         cdaf_infrastructure_path .. "/terrajson/libraries/cdaf_qualitycheck_package",
-            --         cdaf_infrastructure_path .. "/terrajson/libraries/cdaf_sla_package",
-            --         cdaf_infrastructure_path .. "/terrajson/libraries/cdaf_usecase_package",
-            --     }
-            -- end
-
             require("lspconfig").pylsp.setup(opts)
+        end,
+        jsonls = function()
+            require('lspconfig').jsonls.setup({
+                settings = {
+                    json = {
+                        schemas = {}
+                    }
+                }
+            })
         end
-        -- jsonls = function()
-        --     require('lspconfig').jsonls.setup({
-        --         settings = {
-        --             json = {
-        --                 schemas = {
-        --                     {
-        --                         fileMatch = {"bootstrap*tfvars.json"},
-        --                         url = "/home/ctw03319/Projects/cloud-daf-infrastructure/terrajson/stacks/schemas/bootstrap_stack.json"
-        --                     }
-        --                 }
-        --             }
-        --         }
-        --     })
-        -- end
     }
 })
 
-require("lsp-local-libraries").setup()
+-- require("lsp-local-libraries").setup()
 
 -- Terraform
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
@@ -175,15 +127,6 @@ cmp_mappings['<S-Tab>'] = nil
 -- disable Enter to confirm
 cmp_mappings['<CR>'] = nil
 
--- SQL completions
-cmp.setup.filetype({ 'sql', 'mysql', 'plsql' }, {
-    sources = {
-        { name = 'vim-dadbod-completion' },
-    },
-    formatting = lsp_zero.cmp_format(),
-    mapping = cmp_mappings,
-    preselect = cmp.PreselectMode.None
-})
 
 cmp.setup({
     sources = {
@@ -196,4 +139,11 @@ cmp.setup({
     preselect = cmp.PreselectMode.None
 })
 
--- lsp_zero.nvim_workspace()
+-- SQL completions
+cmp.setup.filetype({ 'sql', 'mysql', 'plsql' }, {
+    sources = {
+        { name = 'vim-dadbod-completion' },
+        { name = 'buffer' },
+    },
+})
+

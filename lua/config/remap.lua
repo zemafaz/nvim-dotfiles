@@ -45,10 +45,16 @@ vim.keymap.set("n", "<esc>", "<cmd>:noh<cr>")
 vim.keymap.set("n", "<space>cb", "<cmd>:bd<cr>")
 
 -- Resize windows
-vim.keymap.set("n", "<C-w><", "<cmd>:vertical resize -10<cr>")
-vim.keymap.set("n", "<C-w>>", "<cmd>:vertical resize +10<cr>")
-vim.keymap.set("n", "<C-w>-", "<cmd>:resize -10<cr>")
-vim.keymap.set("n", "<C-w>+", "<cmd>:resize +10<cr>")
+vim.keymap.set("n", "<M-<>", "<cmd>:vertical resize -10<cr>")
+vim.keymap.set("n", "<M->>", "<cmd>:vertical resize +10<cr>")
+vim.keymap.set("n", "<M-->", "<cmd>:resize -10<cr>")
+vim.keymap.set("n", "<M-+>", "<cmd>:resize +10<cr>")
+
+-- Move between windows
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
+vim.keymap.set("n", "<C-l>", "<C-w>l")
 
 -- Focus windows
 -- vim.keymap.set("n", "<leader>l", "<c-w>l")

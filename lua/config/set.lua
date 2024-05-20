@@ -1,6 +1,3 @@
--- Disable cursor styling
--- vim.o.guicursor = ""
-
 vim.o.syntax = "on"
 
 vim.o.number = true
@@ -45,19 +42,5 @@ vim.opt.colorcolumn = "80"
 vim.opt.signcolumn = "yes"
 
 vim.g.netrw_banner = 0
-
--- Set current directory
--- vim.cmd(":cd %:h")
-
--- Temporary fix: disable newline comment continuation
--- vim.cmd("autocmd BufEnter * set formatoptions-=cro")
--- vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro")
-
--- vim.paste = (function(lines, phase)
--- 	vim.api.nvim_put(lines, 'c', false, true)
--- end)
-
--- Change working directory to opened file's
--- vim.o.autochdir = true
 
 vim.opt.inccommand="split"

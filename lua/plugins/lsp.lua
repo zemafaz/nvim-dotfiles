@@ -110,7 +110,8 @@ return {
                                 plugins = {
                                     pycodestyle = {
                                         enabled = true,
-                                        maxLineLength = 140
+                                        maxLineLength = 140,
+                                        ignore = { "E402" },
                                     },
                                     jedi = {
                                         extra_paths = {}

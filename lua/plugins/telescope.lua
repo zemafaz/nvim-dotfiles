@@ -51,7 +51,8 @@ return {
                     prompt_position = "top"
                 },
                 sorting_strategy = "ascending",
-                mappings = mappings
+                mappings = mappings,
+                wrap_results = true,
             },
             extensions = {
                 fzf = {

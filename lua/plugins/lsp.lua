@@ -134,14 +134,6 @@ return {
             }
         })
 
-        -- Format on save
-        vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-            pattern = { "*" },
-            callback = function()
-                vim.lsp.buf.format()
-            end,
-        })
-
         -- Terraform
         vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
             pattern = { "*.tfvars" },

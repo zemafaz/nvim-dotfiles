@@ -31,16 +31,12 @@ return {
 
             -- Integration with trouble
             if pcall(require, "trouble") then
-                vim.keymap.set("n", "gr", function() require("trouble").toggle("lsp_references") end, bufopts)
-                vim.keymap.set("n", "gd", function() require("trouble").toggle("lsp_definitions") end, bufopts)
-                vim.keymap.set("n", "<leader>D", function() require("trouble").toggle("lsp_type_definitions") end,
-                    bufopts)
-            else
-                vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-                vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-                vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+                vim.keymap.set("n", "gR", function() require("trouble").toggle("lsp_references") end, bufopts)
             end
 
+            vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+            vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
             vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
             vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)

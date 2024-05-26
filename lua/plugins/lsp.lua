@@ -98,34 +98,6 @@ return {
                             return true
                         end
                     })
-                end,
-                pylsp = function()
-                    local opts = {
-                        settings = {
-                            pylsp = {
-                                plugins = {
-                                    pycodestyle = {
-                                        enabled = true,
-                                        maxLineLength = 140,
-                                        ignore = { "E402" },
-                                    },
-                                    jedi = {
-                                        extra_paths = {}
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    require("lspconfig").pylsp.setup(opts)
-                end,
-                jsonls = function()
-                    require('lspconfig').jsonls.setup({
-                        settings = {
-                            json = {
-                                schemas = {}
-                            }
-                        }
-                    })
                 end
             }
         })
@@ -137,8 +109,6 @@ return {
                 vim.cmd("set filetype=terraform")
             end,
         })
-
-
 
         local cmp = require('cmp')
         local cmp_mappings = lsp_zero.defaults.cmp_mappings({})

@@ -1,1 +1,1 @@
-return require("plugins.colorscheme.kanagawa");
+return require("plugins.colorscheme.tokyo-night");

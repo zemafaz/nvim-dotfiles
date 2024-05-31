@@ -35,7 +35,9 @@ return {
                 -- ["<C-i>"] = false,
                 -- ["<C-k>"] = false
             },
-            n = {},
+            n = {
+                ["dd"] = require("telescope.actions").delete_buffer
+            },
         }
 
         if pcall(require, "trouble.providers.telescope") then

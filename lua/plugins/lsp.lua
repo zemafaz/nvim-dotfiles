@@ -98,7 +98,7 @@ return {
                             return true
                         end
                     })
-                end
+                end,
             }
         })
 

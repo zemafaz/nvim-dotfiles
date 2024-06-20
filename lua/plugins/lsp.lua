@@ -31,10 +31,11 @@ return {
 
             -- Integration with trouble
             if pcall(require, "trouble") then
-                vim.keymap.set("n", "gR", function() require("trouble").toggle("lsp_references") end, bufopts)
+                vim.keymap.set("n", "gr", function() require("trouble").toggle("lsp_references") end, bufopts)
+            else
+                vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
             end
 
-            vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
             vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
             vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
@@ -48,7 +49,7 @@ return {
             end, bufopts)
             vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
             vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-            vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+            vim.keymap.set('n', '<space>F', function() vim.lsp.buf.format { async = true } end, bufopts)
             vim.keymap.set('i', "<C-h>", function() vim.lsp.buf.signature_help() end, bufopts)
 
             vim.keymap.set('n', '<space>ef', vim.diagnostic.open_float, bufopts)

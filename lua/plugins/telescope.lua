@@ -40,10 +40,9 @@ return {
             },
         }
 
-        if pcall(require, "trouble.providers.telescope") then
-            local trouble = require("trouble.providers.telescope")
-            mappings.i["<c-q>"] = trouble.open_with_trouble
-            mappings.n["<c-q>"] = trouble.open_with_trouble
+        if pcall(require, "trouble.sources.telescope") then
+            local trouble = require("trouble.sources.telescope")
+            mappings.n["<leader>xQ"] = trouble.open
         end
 
         telescope.setup({

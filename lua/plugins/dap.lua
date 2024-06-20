@@ -133,6 +133,14 @@ return {
                     end
                 end,
             },
+            {
+                type = "python",
+                request = "attach",
+                name = "Launch remote (docker)",
+                connect = {
+                    port = 5678
+                },
+            },
         }
     end
 }

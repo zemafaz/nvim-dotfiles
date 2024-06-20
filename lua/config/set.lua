@@ -44,3 +44,5 @@ vim.opt.signcolumn = "yes"
 vim.g.netrw_banner = 0
 
 vim.opt.inccommand="split"
+
+vim.opt.cursorline = true

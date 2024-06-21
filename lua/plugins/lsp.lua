@@ -29,13 +29,7 @@ return {
         lsp_zero.on_attach(function(_, bufnr)
             local bufopts = { buffer = bufnr, remap = false }
 
-            -- Integration with trouble
-            if pcall(require, "trouble") then
-                vim.keymap.set("n", "gr", function() require("trouble").toggle("lsp_references") end, bufopts)
-            else
-                vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-            end
-
+            vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
             vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
             vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
